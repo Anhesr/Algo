@@ -11,6 +11,7 @@
 #include <cstring>
 #include <fstream>
 #include "ClaseTiempo.cpp"
+#include <cmath>
 
 using namespace std; 
 
@@ -20,13 +21,14 @@ void estaOrdenado(const vector <int> &v);
 void quicksort(vector<int> &v,int start, int end ,double &temp);
 double calculaMedia(const vector <double> v);
 void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1);
+double calcularSumatorio(vector <double> v1, vector <double> v2, int exp1 , int exp2);
+void calcularTiemposEstimadosNlogN(const vector <double> &n, const vector <double> &tiemposReales, const double &a0, const double &a1, vector<double> &tiemposEstimados);
 
 int main()
 {
 	vector<int> v;
 	std::vector<double> vaux;
   int n;
-
   int min;
   int max;
   int inc;
@@ -35,8 +37,11 @@ int main()
   double temp;
   Clock time;
   char cadena[128];
+  vector <double> mu;
+  vector <double> tiemposReales;
+  double a0;
+  double a1;
 
-  ofstream fs("Datos.txt"); 
 
   cout<<"Introduzca el minimo de elementos : "<<endl;
 
@@ -76,7 +81,8 @@ int main()
 
 	med = calculaMedia(vaux);
 
-	fs << i << "  " << med << endl;
+	mu.push_back(i);
+	tiemposReales.push_back(med);
 
  	i= i + inc;
 
@@ -84,9 +90,9 @@ int main()
 
   }
 
-   fs.close();
 
 
+   ajusteNlogN(mu,tiemposReales,a0,a1);
 
 
 }
@@ -175,5 +181,50 @@ double calculaMedia(const vector <double> v){
 
 void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1){
 
+	vector <double> z;
+	vector <double> tiemposEstimados;
+
+	for(int i=0;i< (int) n.size();i++){
+		z.push_back(n[i] * log(n[i]));
+	}
+
+	a1=  (((int)n.size()*calcularSumatorio(z,tiemposReales,1,1)) - (calcularSumatorio(z,tiemposReales,1,0) * calcularSumatorio(z,tiemposReales,0,1) ))
+		/ ( ((int)n.size()*calcularSumatorio(z,tiemposReales,2,0)) -  pow( calcularSumatorio(z,tiemposReales,1,0) , 2) ) ;
+
+	a0= calculaMedia(tiemposReales) - (a1 * calculaMedia(z));
 	
+	calcularTiemposEstimadosNlogN(n,tiemposReales,a0,a1,tiemposEstimados);
+
+
+	ofstream fs("Datos.txt");
+
+	for(int i=0;i< (int) n.size();i++){
+
+	fs << n[i] << " " << tiemposReales[i] << " " << tiemposEstimados[i] <<endl;
+
+	}
+
+	fs.close();
+
+}
+
+double calcularSumatorio(vector <double> v1, vector <double> v2, int exp1 , int exp2){
+
+	double sum=0;
+
+	for(int i=0; i < (int) v1.size() ; i++){
+		sum= sum +( pow(v1[i], exp1 ) * pow(v2[i], exp2 ) );
+	}
+
+	return sum ;
+
+}
+
+void calcularTiemposEstimadosNlogN(const vector <double> &n, const vector <double> &tiemposReales, 
+	const double &a0, const double &a1, vector<double> &tiemposEstimados){
+
+		for(int i=0; i < (int) n.size() ; i++){
+			tiemposEstimados.push_back( a0 + (a1 * (n[i] * log(n[i]) ) ));
+		}
+
 }
