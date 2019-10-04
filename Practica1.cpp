@@ -15,6 +15,7 @@
 
 using namespace std; 
 
+void ajusteQuicksort();
 void rellenarVector(vector<int> &v);
 int divide(vector<int> &v, int start, int end);
 void estaOrdenado(const vector <int> &v);
@@ -23,11 +24,18 @@ double calculaMedia(const vector <double> v);
 void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1);
 double calcularSumatorio(vector <double> v1, vector <double> v2, int exp1 , int exp2);
 void calcularTiemposEstimadosNlogN(const vector <double> &n, const vector <double> &tiemposReales, const double &a0, const double &a1, vector<double> &tiemposEstimados);
+double calcularCoeficienteDeterminacion(const vector <double> &tiemposReales,const vector <double> &tiemposEstimados);
+double calcularVarianza(const vector <double> v);
+double calcularTiempoEstimadoNlogN(const double &n, const double &a0, const double &a1);
 
 int main()
 {
-	vector<int> v;
-	std::vector<double> vaux;
+  ajusteQuicksort();
+}
+
+void ajusteQuicksort(){
+    vector<int> v;
+  std::vector<double> vaux;
   int n;
   int min;
   int max;
@@ -36,11 +44,11 @@ int main()
   double med;
   double temp;
   Clock time;
-  char cadena[128];
   vector <double> mu;
   vector <double> tiemposReales;
   double a0;
   double a1;
+  string op;
 
 
   cout<<"Introduzca el minimo de elementos : "<<endl;
@@ -62,40 +70,53 @@ int main()
 
   for(int i=min ; i < max ;){
 
- 	
- 	v.resize(i);
+  
+  v.resize(i);
 
- 	for(int j=0 ; j < rep ;j++ ){
-  		rellenarVector(v);
+  for(int j=0 ; j < rep ;j++ ){
+      rellenarVector(v);
 
-  		time.start();
+      time.start();
 
-  		quicksort(v,0, (int) v.size()-1,temp);
+      quicksort(v,0, (int) v.size()-1,temp);
 
-  		if (time.isStarted())
-		{
-			time.stop();
-			vaux.push_back(time.elapsed());
-		}
-	}
+      if (time.isStarted())
+    {
+      time.stop();
+      vaux.push_back(time.elapsed());
+    }
+  }
 
-	med = calculaMedia(vaux);
+  med = calculaMedia(vaux);
 
-	mu.push_back(i);
-	tiemposReales.push_back(med);
+  mu.push_back(i);
+  tiemposReales.push_back(med);
 
- 	i= i + inc;
+  i= i + inc;
 
- 	estaOrdenado(v);
+  estaOrdenado(v);
 
+  }
+  
+  ajusteNlogN(mu,tiemposReales,a0,a1);
+
+  cout<< "¿Quiere realizar una estimación de tiempo? S/N"<< endl;
+  cin >> op;
+
+  if(op == "S"){
+    while(n!=0){
+    cout<< "Introduzca el numero de elementos"<< endl;
+    cin>>n;
+    cout<< " El tiempo estimado es "<< calcularTiempoEstimadoNlogN(n,a0,a1) <<endl;
+    }
   }
 
 
 
-   ajusteNlogN(mu,tiemposReales,a0,a1);
-
-
 }
+
+
+
 
 void rellenarVector(vector<int> &v){
   srand(time(NULL));
@@ -227,4 +248,32 @@ void calcularTiemposEstimadosNlogN(const vector <double> &n, const vector <doubl
 			tiemposEstimados.push_back( a0 + (a1 * (n[i] * log(n[i]) ) ));
 		}
 
+}
+
+double calcularCoeficienteDeterminacion(const vector <double> &tiemposReales,const vector <double> &tiemposEstimados){
+
+  double varianzaR=calcularVarianza(tiemposReales);
+  double varianzaE=calcularVarianza(tiemposEstimados);
+
+  return varianzaE/varianzaR;
+
+
+}
+
+double calcularVarianza(const vector <double> v){
+  double media=calculaMedia(v);
+  double varianza;
+  for (int i = 0; i < (int) v.size(); ++i)
+  {
+    varianza= varianza+ pow(v[i] - media,2);
+  }
+
+  varianza=varianza/(int) v.size();
+
+  return varianza;
+
+}
+
+double calcularTiempoEstimadoNlogN(const double &n, const  double &a0, const double &a1){
+  return (a0 +(a1 * n * log(n) ) );
 }
