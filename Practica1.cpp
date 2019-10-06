@@ -36,7 +36,7 @@ void calcularTiemposEstimadosPolinomico(const vector <double> &n, const vector <
 
 int main()
 {
-  multiplicacion();
+  ajusteQuicksort();
 }
 
 void ajusteQuicksort(){
