@@ -11,6 +11,7 @@
 #include <cstring>
 #include <fstream>
 #include "ClaseTiempo.cpp"
+#include "sistemaEcuaciones.cpp"
 #include <cmath>
 
 using namespace std; 
@@ -27,10 +28,15 @@ void calcularTiemposEstimadosNlogN(const vector <double> &n, const vector <doubl
 double calcularCoeficienteDeterminacion(const vector <double> &tiemposReales,const vector <double> &tiemposEstimados);
 double calcularVarianza(const vector <double> v);
 double calcularTiempoEstimadoNlogN(const double &n, const double &a0, const double &a1);
+void rellenarMatriz(vector <vector <double>> &v );
+void multiplicacion();
+void productoMatrices(vector <vector <double>> v1 , vector <vector <double>> v2);
+void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposReales, vector <double> &a);
+void calcularTiemposEstimadosPolinomico(const vector <double> &n, const vector <double> &tiemposReales, const vector <double> &a, vector <double> &tiemposEstimados);
 
 int main()
 {
-  ajusteQuicksort();
+  multiplicacion();
 }
 
 void ajusteQuicksort(){
@@ -180,11 +186,6 @@ void estaOrdenado(const vector <int> &v){
       assert( v[i] <= v[i+1] );
   }
 
-  /*cout<<"-----------------------------"<<endl;
-  for(int i=0;i< (int) v.size(); i++){
-    cout<<" "<< v[i] << " " << endl;
-  }
-  cout<<"-----------------------------"<<endl;*/
 }
 
 double calculaMedia(const vector <double> v){
@@ -277,3 +278,197 @@ double calcularVarianza(const vector <double> v){
 double calcularTiempoEstimadoNlogN(const double &n, const  double &a0, const double &a1){
   return (a0 +(a1 * n * log(n) ) );
 }
+
+
+// Ej2 : Multiplicacion de matrices
+
+void multiplicacion(){
+  std::vector<double> vaux;
+  int n;
+  int min;
+  int max;
+  int inc;
+  int rep;
+  int conta=0;
+  double med;
+  double temp;
+  Clock time;
+  vector <double> mu;
+  vector <double> tiemposReales;
+  vector <double> a;
+  vector <double> tiemposEstimados;
+  double a0;
+  double a1;
+  string op;
+
+
+  cout<<"Introduzca el minimo de elementos : "<<endl;
+
+  cin >> min ;
+
+  cout<<"Introduzca el maximo de elementos : "<<endl;
+
+  cin >> max ;
+
+  cout<<"Introduzca el incremento : "<<endl;
+
+  cin >> inc ;
+
+  cout<<"Introduzca el numero de repeticiones : "<<endl;
+
+  cin >> rep ;
+
+
+
+
+  for(int i=min ; i <= max ;){
+
+  
+  vector <vector <double> > mat1(i,vector <double> (i));
+  vector <vector <double> > mat2(i,vector <double> (i));
+
+  for(int j=0 ; j < rep ;j++ ){
+      rellenarMatriz(mat1);
+      rellenarMatriz(mat2);
+
+      time.start();
+
+      productoMatrices(mat1,mat2);
+
+      if (time.isStarted())
+    {
+      time.stop();
+      vaux.push_back(time.elapsed());
+    }
+  }
+
+  med = calculaMedia(vaux);
+
+  mu.push_back(i);
+  tiemposReales.push_back(med);
+
+  i= i + inc;
+
+    if((i > max)&&(conta=0)){
+      i=max;
+      conta++;
+    }
+  }
+
+  tiemposReales.erase(tiemposReales.begin());
+
+  for (int i = 0; i < (int) tiemposReales.size(); ++i)
+  {
+    cout<<mu[i]<<" "<< tiemposReales[i]<<endl;
+  }
+ 
+
+  ajustePolinomico(mu,tiemposReales,a);
+
+  calcularTiemposEstimadosPolinomico(mu,tiemposReales,a,tiemposEstimados);
+
+  /*
+  ajusteNlogN(mu,tiemposReales,a0,a1);
+
+  cout<< "¿Quiere realizar una estimación de tiempo? S/N"<< endl;
+  cin >> op;
+
+  if(op == "S"){
+    while(n!=0){
+    cout<< "Introduzca el numero de elementos"<< endl;
+    cin>>n;
+    cout<< " El tiempo estimado es "<< calcularTiempoEstimadoNlogN(n,a0,a1) <<endl;
+    }
+  }*/
+
+
+
+}
+
+
+void rellenarMatriz(vector <vector <double>> &v ){
+
+  double aux;
+
+  for (int i = 0; i < (int) v[1].size(); ++i)
+  {
+    for (int j = 0; j < (int) v[1].size(); ++j)
+    {
+      aux=rand() % 11;
+      v[i][j] =1.05- aux/100;
+    }
+  }
+}
+
+void productoMatrices(vector <vector <double>> v1 , vector <vector <double>> v2){
+
+  vector <vector <double> > mat3((int) v1[1].size(),vector <double> ((int) v1[1].size()));
+  for(int i=0; i<(int) v1[1].size(); ++i)
+  {
+    for(int j=0; j<(int) v1[1].size(); ++j)
+    {
+      mat3[i][j] = 0;
+    }
+  }
+
+  for(int i=0; i<(int) v1[1].size(); ++i)
+  {
+    for(int j=0; j<(int) v1[1].size(); ++j)
+    {
+      for(int z=0; z<(int) v1[1].size(); ++z){
+
+        mat3[i][j] += v1[i][z] * v2[z][j];
+      }
+    }
+  }
+
+
+}
+
+void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposReales, vector <double> &a){
+
+  vector <vector <double> > A(4,vector <double> (4));
+  vector <vector <double> > B(4,vector <double> (1));
+  vector <vector <double> > X(4,vector <double> (1));
+
+  for (int i=0 ; i< 4 ;i++){
+    for (int j = 0; j < 4; ++j)
+    {
+      A[i][j]=calcularSumatorio(n,tiemposReales,i+j,0);
+    }
+  }
+
+  A[0][0]=n.size();
+
+  for (int i = 0; i < 4; ++i)
+  {
+    B[i][0]=calcularSumatorio(n,tiemposReales,i,1);
+  }
+
+  resolverSistemaEcuaciones(A,B,4,X);
+  for (int i = 0; i < 4; ++i)
+  {
+    a.push_back(X[i][0]);
+  }
+
+}
+
+void calcularTiemposEstimadosPolinomico(const vector <double> &n, const vector <double> &tiemposReales, const vector <double> &a, vector <double> &tiemposEstimados){
+  for (int i = 0; i <(int) n.size(); ++i)
+  {
+    double aux = a[0]+ a[1]*n[i] +a[2]*pow(n[i],2) +a[3]*pow(n[i],3);
+
+    tiemposEstimados.push_back(aux);
+  }
+
+  ofstream fs("Datos.txt");
+
+  for(int i=0;i< (int) n.size() -1;i++){
+
+  fs << n[i] << " " << tiemposReales[i] << " " << tiemposEstimados[i] <<endl;
+
+  }
+  fs.close();
+}
+
+
