@@ -1,59 +1,43 @@
-#include <iostream> 
-#include <vector>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <assert.h>
-#include <stdint.h>
-#include <cassert>
-#include <ctime>
-#include <cstdio>
-#include <cstring>
-#include <fstream>
-#include "ClaseTiempo.cpp"
-#include "sistemaEcuaciones.cpp"
-#include <cmath>
+#include "Practica1.hpp"
 
-using namespace std; 
-
-void ajusteQuicksort();
-void rellenarVector(vector<int> &v);
-int divide(vector<int> &v, int start, int end);
-void estaOrdenado(const vector <int> &v);
-void quicksort(vector<int> &v,int start, int end ,double &temp);
-double calculaMedia(const vector <double> v);
-void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1);
-double calcularSumatorio(vector <double> v1, vector <double> v2, int exp1 , int exp2);
-void calcularTiemposEstimadosNlogN(const vector <double> &n, const vector <double> &tiemposReales, const double &a0, const double &a1, vector<double> &tiemposEstimados);
-double calcularCoeficienteDeterminacion(const vector <double> &tiemposReales,const vector <double> &tiemposEstimados);
-double calcularVarianza(const vector <double> v);
-double calcularTiempoEstimadoNlogN(const double &n, const double &a0, const double &a1);
-void rellenarMatriz(vector <vector <double>> &v );
-void multiplicacion();
-void productoMatrices(vector <vector <double>> v1 , vector <vector <double>> v2);
-void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposReales, vector <double> &a);
-void calcularTiemposEstimadosPolinomico(const vector <double> &n, const vector <double> &tiemposReales, const vector <double> &a, vector <double> &tiemposEstimados);
+using namespace std;
 
 int main()
 {
-  ajusteQuicksort();
+    int op;
+    while(op != 3){
+    cout<<"Elija una opción:"<<endl;
+    cout<<"1.Ajuste del algoritmo Quicksort"<<endl;
+    cout<<"2.Ajuste del algoritmo del producto de matrices"<<endl;
+    cout<<"3.Salir"<<endl;
+    cin>>op;
+    switch(op){
+      case 1:{
+        ajusteQuicksort();
+      }break;
+      case 2:{
+        multiplicacion();
+     }break;
+     case 3: {
+        cout<<"Saliendo del sistema"<<endl;
+     }break;
+     default:{
+      cout<<"Opción desconocida"<<endl;
+     }break;
+  }
+  }
 }
 
 void ajusteQuicksort(){
     vector<int> v;
   std::vector<double> vaux;
-  int n;
-  int min;
-  int max;
-  int inc;
-  int rep;
+  int n,min,max,inc,rep;
   double med;
   double temp;
   Clock time;
   vector <double> mu;
   vector <double> tiemposReales;
-  double a0;
-  double a1;
+  double a0,a1;
   string op;
 
 
@@ -113,7 +97,8 @@ void ajusteQuicksort(){
     while(n!=0){
     cout<< "Introduzca el numero de elementos"<< endl;
     cin>>n;
-    cout<< " El tiempo estimado es "<< calcularTiempoEstimadoNlogN(n,a0,a1) <<endl;
+    if(n!=0)
+    cout<< " El tiempo estimado es "<< (calcularTiempoEstimadoNlogN(n,a0,a1)/86400000000)<<" dias"  <<endl;
     }
   }
 
@@ -284,11 +269,8 @@ double calcularTiempoEstimadoNlogN(const double &n, const  double &a0, const dou
 
 void multiplicacion(){
   std::vector<double> vaux;
-  int n;
-  int min;
-  int max;
-  int inc;
-  int rep;
+  int n,min,max,inc;
+  int rep=1;
   int conta=0;
   double med;
   double temp;
@@ -297,8 +279,6 @@ void multiplicacion(){
   vector <double> tiemposReales;
   vector <double> a;
   vector <double> tiemposEstimados;
-  double a0;
-  double a1;
   string op;
 
 
@@ -314,26 +294,18 @@ void multiplicacion(){
 
   cin >> inc ;
 
-  cout<<"Introduzca el numero de repeticiones : "<<endl;
-
-  cin >> rep ;
-
-
-
 
   for(int i=min ; i <= max ;){
 
   
   vector <vector <double> > mat1(i,vector <double> (i));
-  vector <vector <double> > mat2(i,vector <double> (i));
 
   for(int j=0 ; j < rep ;j++ ){
       rellenarMatriz(mat1);
-      rellenarMatriz(mat2);
 
       time.start();
 
-      productoMatrices(mat1,mat2);
+      productoMatrices(mat1,mat1);
 
       if (time.isStarted())
     {
@@ -355,31 +327,24 @@ void multiplicacion(){
     }
   }
 
-  tiemposReales.erase(tiemposReales.begin());
-
-  for (int i = 0; i < (int) tiemposReales.size(); ++i)
-  {
-    cout<<mu[i]<<" "<< tiemposReales[i]<<endl;
-  }
- 
-
   ajustePolinomico(mu,tiemposReales,a);
 
   calcularTiemposEstimadosPolinomico(mu,tiemposReales,a,tiemposEstimados);
 
-  /*
-  ajusteNlogN(mu,tiemposReales,a0,a1);
 
   cout<< "¿Quiere realizar una estimación de tiempo? S/N"<< endl;
   cin >> op;
+
+
 
   if(op == "S"){
     while(n!=0){
     cout<< "Introduzca el numero de elementos"<< endl;
     cin>>n;
-    cout<< " El tiempo estimado es "<< calcularTiempoEstimadoNlogN(n,a0,a1) <<endl;
+    if(n!=0)
+    cout<< " El tiempo estimado es "<< (calcularTiempoEstimadoPolinomico(n,a)/86400000000)<<" dias" <<endl;
     }
-  }*/
+  }
 
 
 
@@ -456,19 +421,23 @@ void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposRe
 void calcularTiemposEstimadosPolinomico(const vector <double> &n, const vector <double> &tiemposReales, const vector <double> &a, vector <double> &tiemposEstimados){
   for (int i = 0; i <(int) n.size(); ++i)
   {
-    double aux = a[0]+ a[1]*n[i] +a[2]*pow(n[i],2) +a[3]*pow(n[i],3);
+    double aux = a[0]+ (a[1]*n[i]) +(a[2]*pow(n[i],2)) +(a[3]*pow(n[i],3));
 
     tiemposEstimados.push_back(aux);
   }
 
   ofstream fs("Datos.txt");
 
-  for(int i=0;i< (int) n.size() -1;i++){
+  for(int i=0;i< (int) n.size() ;i++){
 
   fs << n[i] << " " << tiemposReales[i] << " " << tiemposEstimados[i] <<endl;
 
   }
   fs.close();
+}
+
+double calcularTiempoEstimadoPolinomico(const double &n, const vector <double> &a){
+  return a[0]+ (a[1]*n) +(a[2]*pow(n,2)) +(a[3]*pow(n,3));
 }
 
 
