@@ -213,6 +213,9 @@ void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales,
 
 	fs.close();
 
+
+  	cout<<"El coeficiente de determinación del ajuste es: "<< calcularCoeficienteDeterminacion(tiemposReales,tiemposEstimados) <<endl;
+
 }
 
 double calcularSumatorio(vector <double> v1, vector <double> v2, int exp1 , int exp2){
@@ -351,7 +354,7 @@ void multiplicacion(){
 }
 
 
-void rellenarMatriz(vector <vector <double>> &v ){
+void rellenarMatriz(vector <vector <double> > &v ){
 
   double aux;
 
@@ -365,7 +368,7 @@ void rellenarMatriz(vector <vector <double>> &v ){
   }
 }
 
-void productoMatrices(vector <vector <double>> v1 , vector <vector <double>> v2){
+void productoMatrices(vector <vector <double> > v1 , vector <vector <double> > v2){
 
   vector <vector <double> > mat3((int) v1[1].size(),vector <double> ((int) v1[1].size()));
   for(int i=0; i<(int) v1[1].size(); ++i)
