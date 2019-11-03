@@ -8,11 +8,12 @@ void insertarCerosDetras(int n,string & cad);
 
 int main(int argc, char const *argv[])
 {
-	int n=10;
-	char num[255];
-	itoa(n,num,10);
-	cout<<n<<endl;
-	return 0;
+	entero a,b;
+	a._n="45000";
+	b._n="10";
+	entero aux=a*b;
+	cout<<aux._n<<endl;
+
 }
 
 
@@ -90,7 +91,10 @@ entero & entero::operator*( entero const &b){
 		int aux1= atoi(this->_n.c_str());
 		int aux2= atoi(b._n.c_str());
 		int mul= aux1*aux2;
-		return aux;
+		char b[50];
+		sprintf(b,"%d",mul);
+		this->_n=string(b);
+		return *this;
 	}
 	else{
 		divideCadena(this->_n,w._n,x._n);

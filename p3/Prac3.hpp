@@ -15,7 +15,6 @@ public:
 	entero & operator+( entero b);
 	entero & operator*( entero const &b);
 	entero & operator=( entero const &b);
-
 };
 
 
