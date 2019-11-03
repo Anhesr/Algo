@@ -1,28 +1,4 @@
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-
-
-using namespace std;
-
-
-struct punto
-{
-	int x;
-	int y;
-};
-
-vector <vector<punto> > matp;
-
-int encontrarCaminos(int f, int c,vector<punto> p);
-
-int encontrarCaminosPrimero(int f, int c, vector <punto> p);
-
-void imprime(vector <punto> p);
-
-void mostrarCaminos();
-
-void imprimeTablero(vector <vector <int> > m);
+#include "Practica2.hpp"
 
 int main()
 {
@@ -45,6 +21,7 @@ int main()
 			system("clear");
 			cout<<"Se han encontrado "<<encontrarCaminos(8, c, p)<<" caminos para la casilla de destino 8,"<<c<<endl;
 
+			cout<<endl;
 			cout<<"¿Quiere ver todos los caminos en un tablero?"<<endl;
 			cout<<"		1.Sí"<<endl;
 			cout<<"		2.No"<<endl;
@@ -62,6 +39,7 @@ int main()
 			matp.clear();
 			cout<<"Se han encontrado "<<encontrarCaminosPrimero(1, 2, p)<<" caminos para la casilla de origen 1,2"<<endl;
 
+			cout<<endl;
 			cout<<"¿Quiere ver todos los caminos en un tablero?"<<endl;
 			cout<<"		1.Sí"<<endl;
 			cout<<"		2.No"<<endl;
@@ -79,6 +57,7 @@ int main()
 			matp.clear();
 			cout<<"Se han encontrado "<<encontrarCaminosPrimero(1, 7, p)<<" caminos para la casilla de origen 1,7"<<endl;
 
+			cout<<endl;
 			cout<<"¿Quiere ver todos los caminos en un tablero?"<<endl;
 			cout<<"		1.Sí"<<endl;
 			cout<<"		2.No"<<endl;
@@ -166,6 +145,7 @@ void imprime(vector <punto> p){
 
 void mostrarCaminos(){
 
+	cin.ignore();
 	for (int i = 0; i < matp.size(); ++i)
 	{
 		vector <vector <int> > maux(8,vector <int> (8));
@@ -178,6 +158,8 @@ void mostrarCaminos(){
 
 		cout<<"Camino "<<i+1<<" :"<<endl;
 		imprimeTablero(maux);
+		cout<<"Pulse ENTER para continuar.";
+		cin.ignore();
 		maux.clear();
 	}
 }
