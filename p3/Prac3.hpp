@@ -14,6 +14,7 @@ public:
 	string _n;
 	entero & operator+( entero b);
 	entero & operator*( entero const &b);
+	entero & operator=( entero const &b);
 
 };
 

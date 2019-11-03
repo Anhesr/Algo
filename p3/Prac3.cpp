@@ -8,14 +8,10 @@ void insertarCerosDetras(int n,string & cad);
 
 int main(int argc, char const *argv[])
 {
-	entero a;
-	entero b;
-
-	a._n="9";
-	b._n="9";
-
-	a+b;
-
+	int n=10;
+	char num[255];
+	itoa(n,num,10);
+	cout<<n<<endl;
 	return 0;
 }
 
@@ -23,7 +19,8 @@ int main(int argc, char const *argv[])
 entero & entero::operator+(entero b){
 		vector <int> x, y;
 		int aux=0;
-		string suma="";
+		entero suma;
+		suma._n="";
 		int acc=0;
 		
 		for (int i = 0; i < this->_n.length(); ++i)
@@ -51,12 +48,12 @@ entero & entero::operator+(entero b){
 				aux = x[i] + y[i];
 				if (aux < 10)
 				{
-					suma.insert(suma.begin(),aux+'0');
+					suma._n.insert(suma._n.begin(),aux+'0');
 					acc=0;
 				}
 				else
 				{
-					suma.insert(suma.begin(),(aux%10)+ '0');
+					suma._n.insert(suma._n.begin(),(aux%10)+ '0');
 					acc=1;
 				}
 			}
@@ -64,39 +61,51 @@ entero & entero::operator+(entero b){
 				aux = x[i] + y[i] + 1;
 				if (aux < 10)
 				{
-					suma.insert(suma.begin(),aux+ '0');
+					suma._n.insert(suma._n.begin(),aux+ '0');
 					acc=0;
 				}
 				else
 				{
-					suma.insert(suma.begin(),(aux%10) + '0');
+					suma._n.insert(suma._n.begin(),(aux%10) + '0');
 					acc=1;
 				}
 			}
 		}
 
 		if (acc==1){
-			suma.insert(suma.begin(),'1');
+			suma._n.insert(suma._n.begin(),'1');
 		}
-		cout<<suma<<endl;
+		this->_n=suma._n;
+		return *this;
 }
 
 
 entero & entero::operator*( entero const &b){
 	entero w,x,y,z,r,p,q;
 	int n= max(this->_n.size(),b._n.size());
+	int s=n/2;
+	entero aux;
 
 	if(n <=4){
 		int aux1= atoi(this->_n.c_str());
 		int aux2= atoi(b._n.c_str());
 		int mul= aux1*aux2;
+		return aux;
 	}
 	else{
 		divideCadena(this->_n,w._n,x._n);
 		divideCadena(b._n,y._n,z._n);
-		r=((w+x)*(y+z));
+		aux=w*y;
+		insertarCerosDetras(s*2,aux._n);
+		return(aux+((w*z)+(x*y)+(x*z)));
+		
 	}
-	
+
+}
+
+entero & entero::operator=( entero const &b){
+	this->_n=b._n;
+	return *this;
 }
 
 void divideCadena(string cad,string &tr1,string &tr2){
