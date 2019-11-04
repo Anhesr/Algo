@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/i72saraf/Desktop/algoritmica/p3/Prac3.cpp
+Prac3.hpp
+/home/i72saraf/Desktop/algoritmica/p3/Prac3.hpp
+
+/home/i72saraf/Desktop/algoritmica/p3/Prac3.hpp
+iostream
+-
+string
+-
+vector
+-
+stdio.h
+-
+stdlib.h
+-
+
