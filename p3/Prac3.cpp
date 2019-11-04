@@ -5,12 +5,18 @@ using namespace std;
 void divideCadena(string cad,string &tr1,string &tr2);
 void insertarCerosDelante(int n,string & cad);
 void insertarCerosDetras(int n,string & cad);
+void sumarNveces(entero &a,int n);
 
 int main(int argc, char const *argv[])
 {
 	entero a,b;
-	a._n="45000";
-	b._n="10";
+	string n1,n2;
+	cout<<"Introduzca el valor del primer entero"<<endl;
+	cin>>n1;
+	a._n=n1;
+	cout<<"Introduzca el valor del primer entero"<<endl;
+	cin>>n2;
+	b._n=n2;
 	entero aux=a*b;
 	cout<<aux._n<<endl;
 
@@ -82,26 +88,36 @@ entero & entero::operator+(entero b){
 
 
 entero & entero::operator*( entero const &b){
-	entero w,x,y,z,r,p,q;
+	entero w,x,y,z;
 	int n= max(this->_n.size(),b._n.size());
 	int s=n/2;
-	entero aux;
+	entero aux1,aux2,aux3,aux4;
 
-	if(n <=4){
-		int aux1= atoi(this->_n.c_str());
-		int aux2= atoi(b._n.c_str());
-		int mul= aux1*aux2;
-		char b[50];
-		sprintf(b,"%d",mul);
-		this->_n=string(b);
+	if(this->_n.size()<=4 || b._n.size()<=4 ){
+		cout<<this->_n<<" "<<b._n<<endl;
+		if(atoi(this->_n.c_str()) <= atoi(b._n.c_str())){
+			entero aux=b;
+			sumarNveces(aux,atoi(this->_n.c_str()));
+			*this=aux;
+		}
+		else{
+			sumarNveces(*this,atoi(b._n.c_str()));
+		}
 		return *this;
 	}
 	else{
 		divideCadena(this->_n,w._n,x._n);
 		divideCadena(b._n,y._n,z._n);
-		aux=w*y;
-		insertarCerosDetras(s*2,aux._n);
-		return(aux+((w*z)+(x*y)+(x*z)));
+	
+		aux1=w*y;
+		cout<<aux1._n<<endl;
+		/*aux2=w*z;
+		aux3=x*y;
+		aux4=x*z;
+
+		insertarCerosDetras(s*2,aux1._n);
+		return(aux1+(aux2+aux3+aux4));*/
+		return *this;
 		
 	}
 
@@ -134,5 +150,15 @@ void insertarCerosDetras(int n,string & cad){
 	for (int i = 0; i < n; ++i)
 	{
 		cad.push_back('0');
+	}
+}
+
+void sumarNveces(entero &a,int n){
+	entero b=a;
+	cout<<a._n<<" "<<n<<endl;
+	for (int i = 0; i < n-1; ++i)
+	{
+		a=a+b;
+		cout<<a._n<<endl;
 	}
 }
