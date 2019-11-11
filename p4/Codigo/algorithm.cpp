@@ -166,6 +166,10 @@ void Algorithm::calculatePolygonalApproximation()
 	if (getOriginalCurve().isClosed() and not getPolygonalApproximation().isClosed())
 		_polygonalApproximation.insertPointDigitalCurve(getPolygonalApproximation().getPointDigitalCurve(0));
 
+	
+
 }
+
+
 
 

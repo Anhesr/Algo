@@ -91,6 +91,18 @@ class Algorithm
 
 		//Calculate te polygonal approximation from the position of dominant points
 		void calculatePolygonalApproximation();
+
+		inline void calculatePolygonalApproximationGreedy(int myN){
+	
+			for(int i = 0; i < _dominantPointPosition.size();){
+				_polygonalApproximation.insertPointDigitalCurve(getOriginalCurve().getPointDigitalCurve(_dominantPointPosition[i]));
+				cout<<i<<endl;
+				i=i+myN;
+			}
+
+			if (getOriginalCurve().isClosed() and not getPolygonalApproximation().isClosed())
+				_polygonalApproximation.insertPointDigitalCurve(getPolygonalApproximation().getPointDigitalCurve(0));
+		}
 };
 
 #endif

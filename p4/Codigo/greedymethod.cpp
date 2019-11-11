@@ -33,23 +33,22 @@ GreedyMethod::~GreedyMethod()
 
 void GreedyMethod::apply()
 {
-  //Summations are calculated
-  calculateSummations();
-
-  //Collinear points are eliminated
-  collinearPointsElimination();
 
   int nPts=getNumberPointsPolygonalApproximation();
-  DigitalCurve cur=getPolygonalApproximation();
-  vector <Point> pts;
+
+  calculateSummations();
+
+  collinearPointsElimination();
 
   vector <int> domainPoints=getDominantPointsPosition();
 
-  int myN=domainPoints.size()/nPts;
+  int myN=domainPoints.size()/(nPts-1);
 
-  for(int i=0;i<cur.getNumberPointsDigitalCurve();i+myN){
-  	pts.push_back(cur.getPointDigitalCurve(i));
+  calculatePolygonalApproximationGreedy(myN);
+
+  for (int i = 0; i < domainPoints.size(); ++i)
+  {
+  	/* code */
   }
-  
 }
 
