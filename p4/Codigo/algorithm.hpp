@@ -96,7 +96,6 @@ class Algorithm
 	
 			for(int i = 0; i < _dominantPointPosition.size();){
 				_polygonalApproximation.insertPointDigitalCurve(getOriginalCurve().getPointDigitalCurve(_dominantPointPosition[i]));
-				cout<<i<<endl;
 				i=i+myN;
 			}
 

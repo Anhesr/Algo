@@ -45,10 +45,5 @@ void GreedyMethod::apply()
   int myN=domainPoints.size()/(nPts-1);
 
   calculatePolygonalApproximationGreedy(myN);
-
-  for (int i = 0; i < domainPoints.size(); ++i)
-  {
-  	/* code */
-  }
 }
 
