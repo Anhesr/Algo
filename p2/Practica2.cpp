@@ -86,7 +86,6 @@ int encontrarCaminos(int f, int c, vector <punto> p){
 	punto auxp;
 	auxp.x=f;
 	auxp.y=c;
-	p.push_back(auxp);
 
 	if( f <=0 || f > 8 ){
 		return 0;
@@ -96,9 +95,9 @@ int encontrarCaminos(int f, int c, vector <punto> p){
 		return 0;
 	}
 
+	p.push_back(auxp);
 	if ( f == 1 ){
 		imprime(p);
-		p.clear();
 		return 1;
 	}
 

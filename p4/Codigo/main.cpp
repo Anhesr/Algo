@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
    a->apply();
 
    cout << "Number of points of the polygonal approxmation: " << a->getNumberPointsPolygonalApproximation() << endl;
-   cout << "The value of ISE is " << a->getISE() << endl;
+   cout << "The value of ISE is " << a->getGreedyISE() << endl;
 
    DigitalCurve aP = a->getPolygonalApproximation();
 

@@ -166,10 +166,19 @@ void Algorithm::calculatePolygonalApproximation()
 	if (getOriginalCurve().isClosed() and not getPolygonalApproximation().isClosed())
 		_polygonalApproximation.insertPointDigitalCurve(getPolygonalApproximation().getPointDigitalCurve(0));
 
-	
 
 }
 
+long double Algorithm::getGreedyISE()
+{
+	long double ISE = 0.0;
+
+	for(int i = 0; i < trueDominantPointPosition.size() -1; i++)
+	{
+		ISE += calculateISEValue(trueDominantPointPosition[i], trueDominantPointPosition[i+1]);
+	}
+	return ISE;
+}
 
 
 

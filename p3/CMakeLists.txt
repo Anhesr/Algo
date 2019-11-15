@@ -1,0 +1,1 @@
+add_executable(Prac3.x Prac3.hpp Prac3.cpp)

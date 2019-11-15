@@ -14,7 +14,7 @@ class Algorithm
 
 		//Vector of dominant points positions. Dominant points are the points of the polygonal approximation.
 		//The position corresponding to the Digital Curve
-		vector <int> _dominantPointPosition; 
+		vector <int> _dominantPointPosition;
 		
 		//Diginal contour that contains polygonal approximation
 		DigitalCurve _polygonalApproximation;
@@ -30,6 +30,8 @@ class Algorithm
 		virtual ~Algorithm()
     	{
    		};
+
+   		vector <int> trueDominantPointPosition;
 
    		//Return the curve used to obtain its polygonal approximation
 		inline DigitalCurve & getOriginalCurve()
@@ -93,15 +95,55 @@ class Algorithm
 		void calculatePolygonalApproximation();
 
 		inline void calculatePolygonalApproximationGreedy(int myN){
+
+			DigitalCurve originalCurve;
+
+			originalCurve=getOriginalCurve();
+
 	
 			for(int i = 0; i < _dominantPointPosition.size();){
 				_polygonalApproximation.insertPointDigitalCurve(getOriginalCurve().getPointDigitalCurve(_dominantPointPosition[i]));
+				trueDominantPointPosition.push_back(i);
 				i=i+myN;
 			}
 
+
 			if (getOriginalCurve().isClosed() and not getPolygonalApproximation().isClosed())
 				_polygonalApproximation.insertPointDigitalCurve(getPolygonalApproximation().getPointDigitalCurve(0));
+
+			long double error= 1000000000000000.0;
+			int pos;
+
+
+			for (int i = 1; i < trueDominantPointPosition.size() - 1 ;i++)
+			{
+
+				for(int j = trueDominantPointPosition[i-1]; j < trueDominantPointPosition[i+1];j++){
+
+					if(error > calculateISEValue(trueDominantPointPosition[0], j ) + calculateISEValue(j, trueDominantPointPosition[2]) ){
+
+						error=calculateISEValue(trueDominantPointPosition[0], j ) + calculateISEValue(j, trueDominantPointPosition[2]);
+						
+						trueDominantPointPosition[i]=j;
+					}
+				}
+			}
+
+			for(int j = trueDominantPointPosition[0]; j < trueDominantPointPosition[2];j++){
+
+					if(error > calculateISEValue(trueDominantPointPosition[0], j ) + calculateISEValue(trueDominantPointPosition[trueDominantPointPosition.size() -1],j ) ){
+
+						error=calculateISEValue(trueDominantPointPosition[0], j ) + calculateISEValue(j, trueDominantPointPosition[2]);
+						
+						trueDominantPointPosition[i]=j;
+					}
+			}
+
+
+
 		}
+
+		long double getGreedyISE();
 };
 
 #endif
