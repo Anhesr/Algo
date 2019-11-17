@@ -186,7 +186,7 @@ double calculaMedia(const vector <double> v){
 	return sum;
 }
 
-void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1){
+/*void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1){
 
 	vector <double> z;
 	vector <double> tiemposEstimados;
@@ -212,6 +212,53 @@ void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales,
 	}
 
 	fs.close();
+
+
+  	cout<<"El coeficiente de determinación del ajuste es: "<< calcularCoeficienteDeterminacion(tiemposReales,tiemposEstimados) <<endl;
+
+}*/
+
+void ajusteNlogN(const vector <double> &n, const vector <double> &tiemposReales, double &a0, double &a1){
+
+	vector <vector <double> > A(2,vector <double> (2));
+  	vector <vector <double> > B(2,vector <double> (1));
+  	vector <vector <double> > X(2,vector <double> (1));
+
+  	vector <double> z;
+  	vector <double> tiemposEstimados;
+
+	for(int i=0;i< (int) n.size();i++){
+
+		z.push_back(n[i] * log(n[i]));
+
+	}
+
+	for (int i=0 ; i< 2 ;i++){
+    	for (int j = 0; j < 2; ++j)
+   		{
+      		A[i][j]=calcularSumatorio(z,tiemposReales,i+j,0);
+   		}
+   		B[i][0]=calcularSumatorio(z,tiemposReales,i,1);
+  	}
+
+	resolverSistemaEcuaciones(A,B,2,X);
+	
+	a0=X[0][0];
+	a1=X[1][0];
+
+	calcularTiemposEstimadosNlogN(n,tiemposReales,a0,a1,tiemposEstimados);
+
+	ofstream fs("Datos.txt");
+
+	for(int i=0;i< (int) n.size();i++){
+
+	fs << n[i] << " " << tiemposReales[i] << " " << tiemposEstimados[i] <<endl;
+
+	}
+
+	fs.close();
+
+	cout<<"El coeficiente de determinación del ajuste es: "<< calcularCoeficienteDeterminacion(tiemposReales,tiemposEstimados) <<endl;
 
 }
 
@@ -351,7 +398,7 @@ void multiplicacion(){
 }
 
 
-void rellenarMatriz(vector <vector <double>> &v ){
+void rellenarMatriz(vector <vector <double> > &v ){
 
   double aux;
 
@@ -365,7 +412,7 @@ void rellenarMatriz(vector <vector <double>> &v ){
   }
 }
 
-void productoMatrices(vector <vector <double>> v1 , vector <vector <double>> v2){
+void productoMatrices(vector <vector <double> > v1 , vector <vector <double> > v2){
 
   vector <vector <double> > mat3((int) v1[1].size(),vector <double> ((int) v1[1].size()));
   for(int i=0; i<(int) v1[1].size(); ++i)
@@ -390,7 +437,7 @@ void productoMatrices(vector <vector <double>> v1 , vector <vector <double>> v2)
 
 }
 
-void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposReales, vector <double> &a){
+/*void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposReales, vector <double> &a){
 
   vector <vector <double> > A(4,vector <double> (4));
   vector <vector <double> > B(4,vector <double> (1));
@@ -416,7 +463,29 @@ void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposRe
     a.push_back(X[i][0]);
   }
 
+}*/
+
+void ajustePolinomico(const vector <double> &n, const vector <double> &tiemposReales, vector <double> &a){
+	vector <vector <double> > A(4,vector <double> (4));
+  	vector <vector <double> > B(4,vector <double> (1));
+  	vector <vector <double> > X(4,vector <double> (1));
+
+  	for (int i = 0; i < 4; ++i)
+  	{
+  		for (int j = 0; j < 4; ++j)
+  		{
+  			A[i][j]=calcularSumatorio(n,tiemposReales,i+j,0);
+  		}
+  		B[i][0]=calcularSumatorio(n,tiemposReales,i,1);
+  	}
+  	resolverSistemaEcuaciones(A,B,4,X);
+  	
+  	for (int i = 0; i < 4; ++i)
+  	{
+  		a.push_back(X[i][0]);
+  	}
 }
+
 
 void calcularTiemposEstimadosPolinomico(const vector <double> &n, const vector <double> &tiemposReales, const vector <double> &a, vector <double> &tiemposEstimados){
   for (int i = 0; i <(int) n.size(); ++i)
