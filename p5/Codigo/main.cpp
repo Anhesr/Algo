@@ -1,6 +1,6 @@
 #include "algorithm.hpp"
 #include "suppressioncollinearpointsmethod.hpp"
-#include "greedymethod.hpp"
+#include "dynamicprogrammingmethod.hpp"
 #include <iostream>
 
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
    cin >> n;
 
    //Creates a new class for method and the pointer points to the new class
-   a = new GreedyMethod(fileNameDC,n);
+   a = new DynamicProgrammingMethod(fileNameDC,n);
 
    //Execute the method
    a->apply();
