@@ -33,12 +33,20 @@ dynamicprogrammingmethod.hpp
 /home/i72saraf/Desktop/algoritmica/p5/Codigo/dynamicprogrammingmethod.hpp
 digitalcurve.hpp
 /home/i72saraf/Desktop/algoritmica/p5/Codigo/digitalcurve.hpp
-bits/stdc++.h
--
 
 /home/i72saraf/Desktop/algoritmica/p5/Codigo/dynamicprogrammingmethod.hpp
 algorithm.hpp
 /home/i72saraf/Desktop/algoritmica/p5/Codigo/algorithm.hpp
+
+/home/i72saraf/Desktop/algoritmica/p5/Codigo/main.cpp
+algorithm.hpp
+/home/i72saraf/Desktop/algoritmica/p5/Codigo/algorithm.hpp
+suppressioncollinearpointsmethod.hpp
+/home/i72saraf/Desktop/algoritmica/p5/Codigo/suppressioncollinearpointsmethod.hpp
+dynamicprogrammingmethod.hpp
+/home/i72saraf/Desktop/algoritmica/p5/Codigo/dynamicprogrammingmethod.hpp
+iostream
+-
 
 /home/i72saraf/Desktop/algoritmica/p5/Codigo/matrix.hpp
 iostream
@@ -53,4 +61,8 @@ vector
 /home/i72saraf/Desktop/algoritmica/p5/Codigo/point.hpp
 math.h
 -
+
+/home/i72saraf/Desktop/algoritmica/p5/Codigo/suppressioncollinearpointsmethod.hpp
+algorithm.hpp
+/home/i72saraf/Desktop/algoritmica/p5/Codigo/algorithm.hpp
 

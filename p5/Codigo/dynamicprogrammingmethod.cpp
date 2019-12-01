@@ -3,7 +3,6 @@
 #include "algorithm.hpp"
 #include "dynamicprogrammingmethod.hpp"
 #include "digitalcurve.hpp"
-#include <bits/stdc++.h>
 //#include "heapvectorMasood.hpp"
 //#include "nodoMasood.hpp"
 
@@ -19,11 +18,16 @@ DynamicProgrammingMethod::DynamicProgrammingMethod(char *fileName,int numberPoin
 {
   //A digital curve is created to load the digital curve in file
 	DigitalCurve dc(fileName);
-
-	setNumberPointsPolygonalApproximation(numberPointsPolygonalApproximation);
-  
-  //Digital curve as saved as original curve
   	setOriginalCurve(dc);
+
+	if(!getOriginalCurve().isClosed()){
+		setNumberPointsPolygonalApproximation(numberPointsPolygonalApproximation);
+	}
+	else{
+		setNumberPointsPolygonalApproximation(numberPointsPolygonalApproximation+1);
+	}
+
+  //Digital curve as saved as original curve
 }
 
 //Destructor
