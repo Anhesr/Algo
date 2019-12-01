@@ -30,16 +30,6 @@ CollinearSuppressionMethod::~CollinearSuppressionMethod()
 
 void CollinearSuppressionMethod::apply()
 {
-  //Summations are calculated
-  calculateSummations();
 
-  //Collinear points are eliminated
-  collinearPointsElimination();
-
-  //Obtaining polygonal approximattion
-  calculatePolygonalApproximation();
-
-  //Set the number of points of the polygonal approximation
-  setNumberPointsPolygonalApproximation(getPolygonalApproximation().getNumberPointsDigitalCurve());
 }
 

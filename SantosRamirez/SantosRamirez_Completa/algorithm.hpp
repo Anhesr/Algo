@@ -14,7 +14,7 @@ class Algorithm
 
 		//Vector of dominant points positions. Dominant points are the points of the polygonal approximation.
 		//The position corresponding to the Digital Curve
-		vector <int> _dominantPointPosition;
+		vector <int> _dominantPointPosition; 
 		
 		//Diginal contour that contains polygonal approximation
 		DigitalCurve _polygonalApproximation;
@@ -31,8 +31,6 @@ class Algorithm
     	{
    		};
 
-   		vector <int> trueDominantPointPosition;
-
    		//Return the curve used to obtain its polygonal approximation
 		inline DigitalCurve & getOriginalCurve()
 		{
@@ -44,12 +42,6 @@ class Algorithm
 		{
 			_digitalCurve = dC;
 		};
-
-		//Copy a vector that contains the positions of the points of the polygonal approximations in class algorithm
-		void setDominantPointsPosition(const vector <int> & v)
-		{
-			_dominantPointPosition = v;
-		}
 
 		//Return the number of points of the polygonal approximation
 		inline int getNumberPointsPolygonalApproximation()
@@ -79,6 +71,12 @@ class Algorithm
 		{
 			return _dominantPointPosition;
 		}
+		
+		//Set the vector that contains the positions of the points of the polygonal approximations
+		void  setDominantPointsPosition(const vector <int>  &v)
+		{
+			 _dominantPointPosition = v;
+		}
 
 		//Virtual pure function. It must be implement in derivated classes
 		//This function is used to obtain the polygonal approximation
@@ -99,10 +97,6 @@ class Algorithm
 
 		//Calculate te polygonal approximation from the position of dominant points
 		void calculatePolygonalApproximation();
-
-		void calculatePolygonalApproximationGreedy(int myN);
-
-		long double getGreedyISE();
 };
 
 #endif

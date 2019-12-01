@@ -40,7 +40,7 @@ class Line
 		};
 
 		long double distancePointLine(const Point &Point)const;
-		int signPointLine(const Point &Point)const;//no se usa
+		int signPointLine(const Point &Point)const;
 
 	private:
  		long double _a;
