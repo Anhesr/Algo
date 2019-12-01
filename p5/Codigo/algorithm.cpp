@@ -151,7 +151,7 @@ void Algorithm::collinearPointsElimination()
 	}
 
 	//The collinear points are eliminated as dominant points
-	for(int i = collinearPoints.size() - 1; i >= 0; i--) 
+	for(int i = collinearPoints.size() - 1; i >= 0; i--)
 	{
 		_dominantPointPosition.erase(_dominantPointPosition.begin() + collinearPoints[i]);
 	}
@@ -166,8 +166,6 @@ void Algorithm::calculatePolygonalApproximation()
 	if (getOriginalCurve().isClosed() and not getPolygonalApproximation().isClosed())
 		_polygonalApproximation.insertPointDigitalCurve(getPolygonalApproximation().getPointDigitalCurve(0));
 
-
 }
-
 
 

@@ -63,9 +63,12 @@ void Algorithm::calculatePolygonalApproximationGreedy(int myN){
       if (getOriginalCurve().isClosed() and not getPolygonalApproximation().isClosed()){
         _polygonalApproximation.insertPointDigitalCurve(getPolygonalApproximation().getPointDigitalCurve(0));
        }
-       
+
       long double error= 1000000000000000.0;
       int pos;
+
+      cout<<getPolygonalApproximation().getNumberPointsDigitalCurve()<<endl;
+
 
       for (int i = 1; i < trueDominantPointPosition.size() - 1 ;i++)
       {
