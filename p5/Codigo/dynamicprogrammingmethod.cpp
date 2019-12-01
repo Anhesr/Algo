@@ -20,12 +20,7 @@ DynamicProgrammingMethod::DynamicProgrammingMethod(char *fileName,int numberPoin
 	DigitalCurve dc(fileName);
   	setOriginalCurve(dc);
 
-	if(!getOriginalCurve().isClosed()){
-		setNumberPointsPolygonalApproximation(numberPointsPolygonalApproximation);
-	}
-	else{
-		setNumberPointsPolygonalApproximation(numberPointsPolygonalApproximation+1);
-	}
+	setNumberPointsPolygonalApproximation(numberPointsPolygonalApproximation);
 
   //Digital curve as saved as original curve
 }
@@ -84,13 +79,13 @@ void DynamicProgrammingMethod::apply()
 
 
 	int sig= Npts;
-
+	domaintPoints.clear();
 	domaintPoints.insert(domaintPoints.begin(),Npts-1);
-
 	for (int i = Mpts; i > 1; i--)
 	{
 		sig=father[sig][i];
 		domaintPoints.insert(domaintPoints.begin(),sig-1);
+
 	}
 
 	setDominantPointsPosition(domaintPoints);
