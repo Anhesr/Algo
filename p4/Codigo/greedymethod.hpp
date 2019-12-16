@@ -1,6 +1,7 @@
 #ifndef GreedyMethod_HPP
 #define GreedyMethod_HPP
-
+#include <stdio.h>      
+#include <stdlib.h>
 #include "algorithm.hpp"
 
 //This class implements a method for obtaining a polygonal approximation
