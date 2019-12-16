@@ -61,8 +61,6 @@ void GreedyMethod::apply()
 
   double errorT = 999999, error;
 
-  while((errorT) != (getISE())){ // SI EL ERROR TOTAL NO CAMBIA SE SALE DE LA ITERACCIÓN (PARTE OPCIONAL)
-    errorT = (getISE()); // ACTUALIZO EL ERROR ANTERIOR
     for (int i = 0; i < newDominantPointPosition.size()-2; ++i) // HASTA N-2 PARA NO HACER VIOLACION DE SEGMENTO EN AUX2 DE ABAJO
     {
       aux1 = newDominantPointPosition[i];
@@ -76,8 +74,6 @@ void GreedyMethod::apply()
         }
       }
     }
-    
-  } 
 
   setDominantPointsPosition(newDominantPointPosition); // ACTUALIZO EL VECTOR
   //Obtaining polygonal approximattion
