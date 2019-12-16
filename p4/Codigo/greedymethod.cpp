@@ -71,11 +71,11 @@ void Algorithm::calculatePolygonalApproximationGreedy(int myN){
     {
       int aux1 = trueDominantPointPosition[i];
       int aux2 = trueDominantPointPosition[i+2]; // COGO LOS DOS PUNTOS DOMINANTES DE LOS EXTREMOS DE LA COMPARACION
-      error = abs(calculateISEValue(aux1, trueDominantPointPosition[i+1])) + abs(calculateISEValue(trueDominantPointPosition[i+1], aux2));
+      error = (calculateISEValue(aux1, trueDominantPointPosition[i+1])) + (calculateISEValue(trueDominantPointPosition[i+1], aux2));
       for (int j = aux1+1; j < aux2; ++j) // Y DOY A ERROR EL VALOR ACTUAL DE LOS PUNTOS DOMINANTES
       { // VOY COMPARANDO CON TODOS LOS PUNTOS INTERMEDIOS DE i e i+2 EL ERROR
-        if(abs(error) > abs(calculateISEValue(aux1, j)) + abs(calculateISEValue(j, aux2))){
-          error = abs(calculateISEValue(aux1, j)) + abs(calculateISEValue(j, aux2)); // SI ES MENOR ACTUALIZO EL ERROR
+        if((error) > (calculateISEValue(aux1, j)) + (calculateISEValue(j, aux2))){
+          error = (calculateISEValue(aux1, j)) + (calculateISEValue(j, aux2)); // SI ES MENOR ACTUALIZO EL ERROR
           trueDominantPointPosition[i+1] = j; // Y ACTUALIZO EL PUNTO DOMINANTE
         }
       }
