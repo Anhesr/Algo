@@ -70,7 +70,7 @@ void Algorithm::calculatePolygonalApproximationGreedy(int myN){
       for (int i = 1; i < trueDominantPointPosition.size() - 1 ;i++)
       {
 
-        for(int j = trueDominantPointPosition[i]; j < trueDominantPointPosition[i+1];j++){
+        for(int j = trueDominantPointPosition[i+1]; j < trueDominantPointPosition[i+1];j++){
 
           if(error > calculateISEValue(trueDominantPointPosition[i-1], j ) + calculateISEValue(j, trueDominantPointPosition[i+1]) ){
 
@@ -87,7 +87,7 @@ void Algorithm::calculatePolygonalApproximationGreedy(int myN){
       calculatePolygonalApproximation();
 
       //Set the number of points of the polygonal approximation
-      setNumberPointsPolygonalApproximation(newDominantPointPosition.size());
+      setNumberPointsPolygonalApproximation(trueDominantPointPosition.size());
 
 }
 
