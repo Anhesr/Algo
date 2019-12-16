@@ -1,0 +1,3 @@
+/home/i72saraf/Desktop/algoritmica/SantosRamirez/SantosRamirez_Completa/CMakeFiles/rebuild_cache.dir
+/home/i72saraf/Desktop/algoritmica/SantosRamirez/SantosRamirez_Completa/CMakeFiles/main.x.dir
+/home/i72saraf/Desktop/algoritmica/SantosRamirez/SantosRamirez_Completa/CMakeFiles/edit_cache.dir
