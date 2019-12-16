@@ -82,35 +82,12 @@ void Algorithm::calculatePolygonalApproximationGreedy(int myN){
         error= 1000000000000000000000.0;
       }
 
-
-      for(int j = trueDominantPointPosition[trueDominantPointPosition.size()-1]+1 ; j < getDominantPointsPosition().size();j++){
-
-        if(error > (calculateISEValue(trueDominantPointPosition[trueDominantPointPosition.size()-1], j ) + 
-          calculateISEValue(j,trueDominantPointPosition[1])) ){
-
-          error=(calculateISEValue(trueDominantPointPosition[trueDominantPointPosition.size()-1], j ) + 
-          calculateISEValue(j,trueDominantPointPosition[1]));
-
-          trueDominantPointPosition[trueDominantPointPosition.size()]=j;
-          trueDominantPointPosition[0]=j;
-        }
-      }
-
-
-      for(int j = 0; j < trueDominantPointPosition[1];j++){
-
-        if(error > (calculateISEValue(trueDominantPointPosition[trueDominantPointPosition.size()-1], j ) + 
-          calculateISEValue(j,trueDominantPointPosition[1])) ){
-
-          error=(calculateISEValue(trueDominantPointPosition[trueDominantPointPosition.size()-1], j ) + 
-          calculateISEValue(j,trueDominantPointPosition[1]));
-
-          trueDominantPointPosition[trueDominantPointPosition.size()]=j;
-          trueDominantPointPosition[0]=j;
-        }
-      }
-
       setDominantPointsPosition(trueDominantPointPosition);
+
+      calculatePolygonalApproximation();
+
+      //Set the number of points of the polygonal approximation
+      setNumberPointsPolygonalApproximation(newDominantPointPosition.size());
 
 }
 
