@@ -20,6 +20,10 @@ iostream
 stdint.h
 -
 
+/home/i72saraf/Desktop/algoritmica/p6/ajusteBacktraking.cpp
+ajusteBacktraking.hpp
+/home/i72saraf/Desktop/algoritmica/p6/ajusteBacktraking.hpp
+
 /home/i72saraf/Desktop/algoritmica/p6/ajusteBacktraking.hpp
 iostream
 -
@@ -59,32 +63,4 @@ iostream
 -
 cmath
 -
-
-/home/i72saraf/Desktop/algoritmica/p6/lasVegas.hpp
-iostream
--
-cmath
--
-ctime
--
-vector
--
-stdio.h
--
-stdlib.h
--
-
-/home/i72saraf/Desktop/algoritmica/p6/main.cpp
-iostream
--
-stdio.h
--
-stdlib.h
--
-backtracking.hpp
-/home/i72saraf/Desktop/algoritmica/p6/backtracking.hpp
-lasVegas.hpp
-/home/i72saraf/Desktop/algoritmica/p6/lasVegas.hpp
-ajusteBacktraking.hpp
-/home/i72saraf/Desktop/algoritmica/p6/ajusteBacktraking.hpp
 

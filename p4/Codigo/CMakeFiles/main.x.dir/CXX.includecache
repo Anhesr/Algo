@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.cpp
-vector
--
-algorithm.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
-digitalcurve.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.hpp
-matrix.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/matrix.hpp
-line.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/line.hpp
-
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
 vector
 -
@@ -27,30 +15,6 @@ digitalcurve.hpp
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.hpp
 matrix.hpp
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/matrix.hpp
-
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.cpp
-vector
--
-algorithm
--
-iostream
--
-fstream
--
-cstdlib
--
-cstring
--
-math.h
--
-cassert
--
-digitalcurve.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.hpp
-point.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/point.hpp
-line.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/line.hpp
 
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.hpp
 point.hpp
@@ -71,22 +35,12 @@ digitalcurve.hpp
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.hpp
 
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/greedymethod.hpp
-algorithm.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
-
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/line.hpp
-point.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/point.hpp
-
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/main.cpp
-algorithm.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
-suppressioncollinearpointsmethod.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/suppressioncollinearpointsmethod.hpp
-greedymethod.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/greedymethod.hpp
-iostream
+stdio.h
 -
+stdlib.h
+-
+algorithm.hpp
+/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
 
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/matrix.hpp
 iostream
@@ -101,18 +55,4 @@ vector
 /home/i72saraf/Desktop/algoritmica/p4/Codigo/point.hpp
 math.h
 -
-
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/suppressioncollinearpointsmethod.cpp
-vector
--
-algorithm.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
-suppressioncollinearpointsmethod.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/suppressioncollinearpointsmethod.hpp
-digitalcurve.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/digitalcurve.hpp
-
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/suppressioncollinearpointsmethod.hpp
-algorithm.hpp
-/home/i72saraf/Desktop/algoritmica/p4/Codigo/algorithm.hpp
 
