@@ -1,0 +1,3 @@
+/home/i72saraf/Desktop/algoritmica/al/Practica4/Codigo/CMakeFiles/rebuild_cache.dir
+/home/i72saraf/Desktop/algoritmica/al/Practica4/Codigo/CMakeFiles/main.x.dir
+/home/i72saraf/Desktop/algoritmica/al/Practica4/Codigo/CMakeFiles/edit_cache.dir

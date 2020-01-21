@@ -1,0 +1,3 @@
+/home/i72saraf/Desktop/i72saraf/CMakeFiles/rebuild_cache.dir
+/home/i72saraf/Desktop/i72saraf/CMakeFiles/pract2.dir
+/home/i72saraf/Desktop/i72saraf/CMakeFiles/edit_cache.dir

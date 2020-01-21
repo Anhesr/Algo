@@ -1,0 +1,3 @@
+/home/i72saraf/Desktop/fsiv/prueba/CMakeFiles/rebuild_cache.dir
+/home/i72saraf/Desktop/fsiv/prueba/CMakeFiles/prueba.dir
+/home/i72saraf/Desktop/fsiv/prueba/CMakeFiles/edit_cache.dir

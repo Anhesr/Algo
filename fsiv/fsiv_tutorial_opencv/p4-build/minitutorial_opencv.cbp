@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="minitutorial_opencv"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pract4">
+				<Option output="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/pract4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include.ORIG"/>
+					<Add directory="/usr/local/include.ORIG/opencv"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/i686-pc-linux-gnu"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 pract4"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pract4/fast">
+				<Option output="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/pract4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include.ORIG"/>
+					<Add directory="/usr/local/include.ORIG/opencv"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/i686-pc-linux-gnu"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/include"/>
+					<Add directory="/usr/local/opt/gcc-5.3.0-32/lib/gcc/i686-pc-linux-gnu/5.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 pract4/fast"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/local/bin/gmake -j4 -f &quot;/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4-build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4/pract4.cc">
+			<Option target="pract4"/>
+		</Unit>
+		<Unit filename="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4/../../../../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4/../../../../../../usr/local/share/OpenCV/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4/../../../../../../usr/local/share/OpenCV/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p4/../../../../../../usr/local/share/OpenCV/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

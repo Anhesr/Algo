@@ -1,0 +1,4 @@
+/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/CMakeFiles/edit_cache.dir
+/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/CMakeFiles/rebuild_cache.dir
+/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/CMakeFiles/pract2.dir
+/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/CMakeFiles/pract3.dir
