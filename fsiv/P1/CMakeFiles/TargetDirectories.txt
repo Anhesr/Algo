@@ -1,0 +1,3 @@
+/home/bixde/Escritorio/algo/P1/CMakeFiles/rebuild_cache.dir
+/home/bixde/Escritorio/algo/P1/CMakeFiles/pract1.dir
+/home/bixde/Escritorio/algo/P1/CMakeFiles/edit_cache.dir

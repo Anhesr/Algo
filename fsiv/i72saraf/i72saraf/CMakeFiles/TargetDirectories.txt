@@ -1,0 +1,3 @@
+/home/bixde/Escritorio/algo/fsiv/i72saraf/i72saraf/CMakeFiles/rebuild_cache.dir
+/home/bixde/Escritorio/algo/fsiv/i72saraf/i72saraf/CMakeFiles/pract4.dir
+/home/bixde/Escritorio/algo/fsiv/i72saraf/i72saraf/CMakeFiles/edit_cache.dir

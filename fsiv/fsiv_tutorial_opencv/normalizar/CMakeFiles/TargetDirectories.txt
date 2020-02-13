@@ -1,0 +1,3 @@
+/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/normalizar/CMakeFiles/rebuild_cache.dir
+/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/normalizar/CMakeFiles/pract1.dir
+/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/normalizar/CMakeFiles/edit_cache.dir

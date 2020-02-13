@@ -1,0 +1,18 @@
+
+Practica 3. Realce de imagen usando máscara de enfoque (Sharp mask)
+
+-------------------------------------------------------------------------
+
+Parte realizada:
+
+  Requisitos basicos de la practica, entre ellos:
+
+    - La implementacion de las funciones create_sharp_filter y convolve
+    - El programa "sharpen" con la CLI indicada
+    - Las opciones f y g de la CLI y su control de valores permitidos
+
+------------------------------------------------------------------------
+
+  Linea de Comandos para probar la practica:
+
+      ./sharpen [-f <int=0>] [-g <float=1.0>] <input img> <output img>

@@ -1,0 +1,3 @@
+/home/bixde/Escritorio/algo/fsiv/i72marmj/CMakeFiles/rebuild_cache.dir
+/home/bixde/Escritorio/algo/fsiv/i72marmj/CMakeFiles/sharpen.dir
+/home/bixde/Escritorio/algo/fsiv/i72marmj/CMakeFiles/edit_cache.dir

@@ -4,15 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p5/lbp.cpp" "/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p5/CMakeFiles/lbpdesc.dir/lbp.cpp.o"
-  "/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p5/test_lbp.cpp" "/home/i72saraf/Desktop/fsiv/fsiv_tutorial_opencv/p5/CMakeFiles/lbpdesc.dir/test_lbp.cpp.o"
+  "/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/p5/lbp.cpp" "/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/p5/CMakeFiles/lbpdesc.dir/lbp.cpp.o"
+  "/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/p5/test_lbp.cpp" "/home/bixde/Escritorio/algo/fsiv/fsiv_tutorial_opencv/p5/CMakeFiles/lbpdesc.dir/test_lbp.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include.ORIG"
-  "/usr/local/include.ORIG/opencv"
+  "/usr/local/include/opencv4"
   )
 
 # Targets to which this target links.

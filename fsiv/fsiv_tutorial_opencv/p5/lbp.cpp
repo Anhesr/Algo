@@ -27,47 +27,42 @@ void fsiv_lbp(const cv::Mat & imagem, cv::Mat & lbp)
 {
     lbp = cv::Mat::zeros(imagem.rows, imagem.cols, CV_8UC1);
     cv::Mat imgC;
+    cvtColor(imagem,imgC,COLOR_BGR2GRAY);
+    copyMakeBorder(imgC,imgC,1,1,1,1,BORDER_CONSTANT,0);
 
-    cv::cvtColor(imagem,imgC,COLOR_BGR2GRAY);
-
-    cv::copyMakeBorder(imgC,imgC,1,1,1,1,cv::BORDER_CONSTANT,0);
-
-    for(int i=1;i<imgC.rows-1;i++) 
+    for (int i = 1; i < imgC.rows-1; ++i)
     {
-        for(int j=1;j<imgC.cols-1;j++)
-        {
-
-            uchar center = imgC.at<uchar>(i,j);
-            int centR = 0;
-
-            if( imgC.at<uchar>(i-1,j-1) <= center){
+        for (int j = 1; j < imgC.cols-1  ; ++j)
+           {
+                uchar center=imgC.at<uchar>(i,j);
+                int centR=0;
+                if( imgC.at<uchar>(i-1,j-1) > center){
                 centR = centR + pow(2,7);
-            }// 7
-            if(imgC.at<uchar>(i-1,j) <= center){
-                centR = centR + pow(2,6);
-            }// 6
-            if(imgC.at<uchar>(i-1,j+1) <= center){  
-                centR = centR + pow(2,5);
-            }// 5
-            if(imgC.at<uchar>(i,j+1) <= center){
-                centR = centR + pow(2,4);
-            }//4
-            if(imgC.at<uchar>(i+1,j+1) <= center){
-                centR = centR + pow(2,3);
-            }//3
-            if(imgC.at<uchar>(i+1,j) <= center) {
-                centR = centR + pow(2,2);
-            }//2
-            if(imgC.at<uchar>(i+1,j-1) <= center) {
-                centR = centR + pow(2,1);
-            }//1
-            if(imgC.at<uchar>(i,j-1) <= center) {
-                centR = centR + pow(2,0);
-            }//0
-            lbp.at<uchar>(i-1,j-1) = centR;
-        }
+                }// 7
+                if(imgC.at<uchar>(i-1,j) > center){
+                    centR = centR + pow(2,6);
+                }// 6
+                if(imgC.at<uchar>(i-1,j+1) > center){  
+                    centR = centR + pow(2,5);
+                }// 5
+                if(imgC.at<uchar>(i,j+1) > center){
+                    centR = centR + pow(2,4);
+                }//4
+                if(imgC.at<uchar>(i+1,j+1) > center){
+                    centR = centR + pow(2,3);
+                }//3
+                if(imgC.at<uchar>(i+1,j) > center) {
+                    centR = centR + pow(2,2);
+                }//2
+                if(imgC.at<uchar>(i+1,j-1) > center) {
+                    centR = centR + pow(2,1);
+                }//1
+                if(imgC.at<uchar>(i,j-1) > center) {
+                    centR = centR + pow(2,0);
+                }//0
+                lbp.at<uchar>(i-1,j-1) = centR;
+           }   
     }
-
 }
 
 void fsiv_ulbp(const cv::Mat & imagem, cv::Mat & ulbp)
@@ -78,34 +73,17 @@ void fsiv_ulbp(const cv::Mat & imagem, cv::Mat & ulbp)
 
 void fsiv_lbp_hist(const cv::Mat & lbp, cv::Mat & lbp_hist, bool norm, int nbins)
 {	    
-	lbp_hist = cv::Mat::zeros(1,nbins,CV_32FC1);
+    vector<Mat> images={lbp};
+    vector<int> channels={0},size={nbins};
+    vector<float> range={0,(float)nbins};
 
-	Mat lbpa ,lbpaux;
+    calcHist(images,channels,Mat(),lbp_hist,size,range);
 
-    //TODO compute lbp hist. \see cv::calcHist. Establish the number of bins
-    float range[]={0,256};
-    const float* histRange = { range };
-
-    calcHist( &lbp, 1, 0, Mat(), lbpaux, 1, &nbins, &histRange,true,false);
-    lbpa=lbpaux.clone();
-
-    // Normalize?
-    if (norm)
-    {
-		normalize(lbpa,lbpaux,1.0,0.0,NORM_L1);
+    if(norm){
+        lbp_hist=lbp_hist.mul(1.0/(lbp.cols*lbp.rows));
     }
-
-
-    for(int i=0;i<lbpaux.rows;i++) 
-    {
-        for(int j=0;j<lbpaux.cols;j++)
-        {
-        	lbp_hist.at<float>(j,i)= lbpaux.at<float>(i,j);
-		}
-    }
-
+    lbp_hist=lbp_hist.reshape(0,1);
 }
-
 void fsiv_lbp_desc(const cv::Mat & image, cv::Mat & lbp_desc, const int *ncells, bool normalize, int nbins)
 {
 	//TODO compute lbp desc.
@@ -124,18 +102,14 @@ void fsiv_lbp_disp(const cv::Mat & lbpmat, const std::string & winname)
 
 float fsiv_chisquared_dist(const cv::Mat & h1, const cv::Mat & h2)
 {
-	 float dist= 0.0;
-
-
-
-	 for (int i = 0; i < h1.cols ; ++i)
-	 {
-	 	if(h1.at<float>(0,i) != 0 and h2.at<float>(0,i) != 0){
-	 		dist= dist + ( abs(pow( (h1.at<float>(0,i)-h2.at<float>(0,i)) , 2)) / (h1.at<float>(0,i)+h2.at<float>(0,i)));
-	 	}
-	 }
-
-	 dist = dist * 0.5;
-	//TODO compute chi^2 distance. do not assume 256 bins allways!!
+	float dist= 0.0;
+    for (int i = 0; i < h1.cols; ++i)
+    {
+        if(h1.at<float>(0,i) != 0 and h2.at<float>(0,i) != 0){
+        dist+= ((pow( abs (h1.at<float>(0,i) - h2.at<float>(0,i)) , 2)) /
+                (h1.at<float>(0,i) + h2.at<float>(0,i)));
+        }
+    }
+    dist*=0.5;
     return dist;
 }
